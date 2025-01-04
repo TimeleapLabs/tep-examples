@@ -1,0 +1,19 @@
+{
+  "name": "plugin",
+  "packageManager": "yarn@4.5.2",
+  "dependencies": {
+    "@timeleap/sia": "^2.1.0",
+    "uuid25": "^0.1.5",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.3",
+    "@types/ws": "^8.5.13",
+    "typescript": "^5.7.2"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  }
+}
