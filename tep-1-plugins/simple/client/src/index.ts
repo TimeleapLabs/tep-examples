@@ -2,7 +2,7 @@ import WebSocket from "ws";
 import { Sia } from "@timeleap/sia";
 import { uuidv7obj } from "uuidv7";
 
-const VERSION = "0.14.0";
+const VERSION = process.env.UNCHAINED_PROTOCOL_VERSION;
 const ws = new WebSocket(`ws://localhost:9123/${VERSION}`);
 
 const age = Math.floor(Math.random() * 42) + 18;

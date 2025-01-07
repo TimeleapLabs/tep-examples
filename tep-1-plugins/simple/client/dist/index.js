@@ -1,7 +1,7 @@
 import WebSocket from "ws";
 import { Sia } from "@timeleap/sia";
 import { uuidv7obj } from "uuidv7";
-const VERSION = "0.14.0";
+const VERSION = process.env.UNCHAINED_PROTOCOL_VERSION;
 const ws = new WebSocket(`ws://localhost:9123/${VERSION}`);
 const age = Math.floor(Math.random() * 42) + 18;
 const opcode = new Uint8Array([9]);
@@ -25,22 +25,22 @@ ws.on("message", (data) => {
     const opcode = sia.readByteArrayN(1);
     if (opcode[0] === 5) {
         console.error(data.subarray(1).toString());
-        return ws.terminate();
+        return ws.close();
     }
     const responseUuid = sia.readByteArray8();
     // verify that the response UUID matches the request UUID
     if (Buffer.compare(uuid.bytes, responseUuid) !== 0) {
         console.error("UUID mismatch");
-        return ws.terminate();
+        return ws.close();
     }
     const error = sia.readUInt16();
     if (error !== 0) {
         console.error(`Error: ${error}`);
-        return ws.terminate();
+        return ws.close();
     }
     const isWizard = sia.readBool();
     const message = sia.readAscii();
     console.log(message);
     console.log(`Is Wizard: ${isWizard}`);
-    ws.terminate();
+    ws.close();
 });
