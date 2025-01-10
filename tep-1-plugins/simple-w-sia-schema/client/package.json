@@ -1,0 +1,19 @@
+{
+  "name": "client",
+  "packageManager": "yarn@4.5.2",
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/ws": "^8.5.13",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@timeleap/sia": "^2.1.0",
+    "uuidv7": "^1.0.2",
+    "ws": "^8.18.0"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  }
+}

@@ -1,0 +1,16 @@
+schema WizardCall {
+  uuid        byte8[]
+  signature   byte8[]
+  tx          string8(encoding = "ascii")
+  plugin      string8(encoding = "ascii")
+  method      string8(encoding = "ascii")
+  name        string8(encoding = "ascii")
+  age         uint8
+}
+
+schema WizardResponse {
+  uuid        byte8[]
+  error?      uint16
+  isWizard?   bool
+  message?    string8(encoding = "ascii")
+}
