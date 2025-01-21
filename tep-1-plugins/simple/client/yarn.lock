@@ -232,12 +232,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@scure/base@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "@scure/base@npm:1.2.4"
+  checksum: 10c0/469c8aee80d6d6973e1aac6184befa04568f1b4016e40c889025f4a721575db9c1ca0c2ead80613896cce929392740322a18da585a427f157157e797dc0a42a9
+  languageName: node
+  linkType: hard
+
 "@timeleap/sia@npm:^2.1.0":
   version: 2.1.0
   resolution: "@timeleap/sia@npm:2.1.0"
   dependencies:
     utfz-lib: "npm:^0.2.0"
   checksum: 10c0/45441acde53024e91c93fe3f050f4ef44193c71bff8ee4bfb0da81f41ec098cc46f1c5071617cfff2b6a8f54bfe93a788ab8a3da3583cdb0d21956d1669a9d77
+  languageName: node
+  linkType: hard
+
+"@timeleap/unchained-client@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@timeleap/unchained-client@npm:1.0.0"
+  dependencies:
+    "@noble/ed25519": "npm:^2.2.3"
+    "@scure/base": "npm:^1.2.4"
+    "@timeleap/sia": "npm:^2.1.0"
+  checksum: 10c0/9424af398f8b23a7b8cae961f4303043dd0c7ead4e9eda65a85617e9db6ab140b6cd8c2589ef057db32f4cc2d64f63ee08482284292913f855971ccbab3e16a5
   languageName: node
   linkType: hard
 
@@ -359,6 +377,7 @@ __metadata:
   dependencies:
     "@noble/ed25519": "npm:^2.2.3"
     "@timeleap/sia": "npm:^2.1.0"
+    "@timeleap/unchained-client": "npm:^1.0.0"
     "@types/node": "npm:^22.10.5"
     "@types/ws": "npm:^8.5.13"
     base58-js: "npm:^3.0.2"
@@ -366,7 +385,6 @@ __metadata:
     tsx: "npm:^4.19.2"
     typescript: "npm:^5.7.2"
     uuidv7: "npm:^1.0.2"
-    ws: "npm:^8.18.0"
   languageName: unknown
   linkType: soft
 
@@ -1208,21 +1226,6 @@ __metadata:
     string-width: "npm:^5.0.1"
     strip-ansi: "npm:^7.0.1"
   checksum: 10c0/138ff58a41d2f877eae87e3282c0630fc2789012fc1af4d6bd626eeb9a2f9a65ca92005e6e69a75c7b85a68479fe7443c7dbe1eb8fbaa681a4491364b7c55c60
-  languageName: node
-  linkType: hard
-
-"ws@npm:^8.18.0":
-  version: 8.18.0
-  resolution: "ws@npm:8.18.0"
-  peerDependencies:
-    bufferutil: ^4.0.1
-    utf-8-validate: ">=5.0.2"
-  peerDependenciesMeta:
-    bufferutil:
-      optional: true
-    utf-8-validate:
-      optional: true
-  checksum: 10c0/25eb33aff17edcb90721ed6b0eb250976328533ad3cd1a28a274bd263682e7296a6591ff1436d6cbc50fa67463158b062f9d1122013b361cec99a05f84680e06
   languageName: node
   linkType: hard
 
