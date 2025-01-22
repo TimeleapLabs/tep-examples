@@ -5,11 +5,11 @@ import { Client, Wallet } from "@timeleap/unchained-client";
 
 config();
 
+const uri = process.env.BROKER_URI!;
+const publicKey = process.env.BROKER_PUBLIC_KEY!;
+
 const wallet = await Wallet.fromBase58(process.env.CLIENT_PRIVATE_KEY!);
-const client = await Client.connect(wallet, {
-  uri: process.env.BROKER_URI!,
-  publicKey: process.env.BROKER_PUBLIC_KEY!,
-});
+const client = await Client.connect(wallet, { uri, publicKey });
 
 const age = Math.floor(Math.random() * 42) + 18;
 
