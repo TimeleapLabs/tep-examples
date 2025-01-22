@@ -12,7 +12,6 @@ const client = await Client.connect(wallet, {
 });
 
 const age = Math.floor(Math.random() * 42) + 18;
-const uuid = uuidv7obj();
 
 const isWizardFn = client.method({
   plugin: "swiss.timeleap.isWizard.v1",
@@ -21,7 +20,6 @@ const isWizardFn = client.method({
 });
 
 console.log(`Checking if John Doe (${age}yo) is a wizard...`);
-console.log(`Request UUID: ${uuid.toString()}`);
 
 const payload = Sia.alloc(64).addAscii("John Doe").addUInt8(age);
 const response = await isWizardFn.populate(payload).invoke();
