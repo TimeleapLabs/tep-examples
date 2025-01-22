@@ -239,23 +239,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@timeleap/sia@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@timeleap/sia@npm:2.1.0"
+"@timeleap/sia@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@timeleap/sia@npm:2.2.0"
   dependencies:
     utfz-lib: "npm:^0.2.0"
-  checksum: 10c0/45441acde53024e91c93fe3f050f4ef44193c71bff8ee4bfb0da81f41ec098cc46f1c5071617cfff2b6a8f54bfe93a788ab8a3da3583cdb0d21956d1669a9d77
+  checksum: 10c0/cf9b7fdd589eaa3a568bf4de6b4f064a5b4a92d206636b88519ba24f4f6f878b38f1af88b520448ccfc23f62922d80230ded569eae1fe04608211e7646df347d
   languageName: node
   linkType: hard
 
-"@timeleap/unchained-client@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@timeleap/unchained-client@npm:1.0.0"
+"@timeleap/unchained-client@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@timeleap/unchained-client@npm:1.1.0"
   dependencies:
     "@noble/ed25519": "npm:^2.2.3"
     "@scure/base": "npm:^1.2.4"
-    "@timeleap/sia": "npm:^2.1.0"
-  checksum: 10c0/9424af398f8b23a7b8cae961f4303043dd0c7ead4e9eda65a85617e9db6ab140b6cd8c2589ef057db32f4cc2d64f63ee08482284292913f855971ccbab3e16a5
+    "@timeleap/sia": "npm:^2.2.0"
+    uuidv7: "npm:^1.0.2"
+  checksum: 10c0/f9c6fe7b7079bfb01d33b062d4dd2a6fc7f68b3a3532de40408bdf87433db3259b2be77ffae7797d3fc416d82409e1912078a5e6d24c29fabb8fa3b55f26f748
   languageName: node
   linkType: hard
 
@@ -376,8 +377,8 @@ __metadata:
   resolution: "client@workspace:."
   dependencies:
     "@noble/ed25519": "npm:^2.2.3"
-    "@timeleap/sia": "npm:^2.1.0"
-    "@timeleap/unchained-client": "npm:^1.0.0"
+    "@timeleap/sia": "npm:^2.2.0"
+    "@timeleap/unchained-client": "npm:^1.1.0"
     "@types/node": "npm:^22.10.5"
     "@types/ws": "npm:^8.5.13"
     base58-js: "npm:^3.0.2"

@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@noble/ed25519": "^2.2.3",
-    "@timeleap/sia": "^2.1.0",
-    "@timeleap/unchained-client": "^1.0.0",
+    "@timeleap/sia": "^2.2.0",
+    "@timeleap/unchained-client": "^1.1.0",
     "base58-js": "^3.0.2",
     "dotenv": "^16.4.7",
     "uuidv7": "^1.0.2"
