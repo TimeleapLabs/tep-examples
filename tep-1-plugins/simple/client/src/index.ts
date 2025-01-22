@@ -1,5 +1,4 @@
 import { Sia } from "@timeleap/sia";
-import { uuidv7obj } from "uuidv7";
 import { config } from "dotenv";
 import { Client, Wallet } from "@timeleap/unchained-client";
 

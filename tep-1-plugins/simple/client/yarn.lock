@@ -260,21 +260,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.10.5":
+"@types/node@npm:^22.10.5":
   version: 22.10.5
   resolution: "@types/node@npm:22.10.5"
   dependencies:
     undici-types: "npm:~6.20.0"
   checksum: 10c0/6a0e7d1fe6a86ef6ee19c3c6af4c15542e61aea2f4cee655b6252efb356795f1f228bc8299921e82924e80ff8eca29b74d9dd0dd5cc1a90983f892f740b480df
-  languageName: node
-  linkType: hard
-
-"@types/ws@npm:^8.5.13":
-  version: 8.5.13
-  resolution: "@types/ws@npm:8.5.13"
-  dependencies:
-    "@types/node": "npm:*"
-  checksum: 10c0/a5430aa479bde588e69cb9175518d72f9338b6999e3b2ae16fc03d3bdcff8347e486dc031e4ed14601260463c07e1f9a0d7511dfc653712b047c439c680b0b34
   languageName: node
   linkType: hard
 
@@ -329,13 +320,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"base58-js@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "base58-js@npm:3.0.2"
-  checksum: 10c0/a79b9acd98528e3eeec50f3c89f3b34c5286a3d53f0f5b0fbcfaf1f3399cd9396bc3d68fded8a50613e15bd6455dfc31467db4780a241dc06677f7bfad2a8031
-  languageName: node
-  linkType: hard
-
 "brace-expansion@npm:^2.0.1":
   version: 2.0.1
   resolution: "brace-expansion@npm:2.0.1"
@@ -376,16 +360,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "client@workspace:."
   dependencies:
-    "@noble/ed25519": "npm:^2.2.3"
     "@timeleap/sia": "npm:^2.2.0"
     "@timeleap/unchained-client": "npm:^1.1.0"
     "@types/node": "npm:^22.10.5"
-    "@types/ws": "npm:^8.5.13"
-    base58-js: "npm:^3.0.2"
     dotenv: "npm:^16.4.7"
     tsx: "npm:^4.19.2"
     typescript: "npm:^5.7.2"
-    uuidv7: "npm:^1.0.2"
   languageName: unknown
   linkType: soft
 
