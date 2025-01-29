@@ -1,6 +1,7 @@
 import { Sia } from "@timeleap/sia";
 import { config } from "dotenv";
 import { Client, Wallet } from "@timeleap/unchained-client";
+import { Sorcery } from "./model/wizard.js";
 
 config();
 
@@ -9,22 +10,14 @@ const publicKey = process.env.BROKER_PUBLIC_KEY!;
 
 const wallet = await Wallet.fromBase58(process.env.CLIENT_PRIVATE_KEY!);
 const client = await Client.connect(wallet, { uri, publicKey });
+const sorcery = Sorcery.connect(client);
 
 const age = Math.floor(Math.random() * 42) + 18;
+const name = "John Doe";
 
-const isWizardFn = client.method({
-  plugin: "swiss.timeleap.isWizard.v1",
-  method: "isWizard",
-  timeout: 5000,
-});
+console.log(`Checking if ${name} (${age}yo) is a wizard...`);
+const response = await sorcery.isWizard(Sia.alloc(64), { name, age });
 
-console.log(`Checking if John Doe (${age}yo) is a wizard...`);
-
-const payload = Sia.alloc(64).addAscii("John Doe").addUInt8(age);
-const response = await isWizardFn.populate(payload).invoke();
-const isWizard = response.readBool();
-const message = response.readAscii();
-
-console.log(message);
-console.log(`Is Wizard: ${isWizard}`);
+console.log(response.message);
+console.log(`Is Wizard: ${response.isWizard}`);
 client.close();

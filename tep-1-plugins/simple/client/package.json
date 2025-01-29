@@ -2,18 +2,21 @@
   "name": "client",
   "packageManager": "yarn@4.5.2",
   "devDependencies": {
+    "@timeleap/sia-schema": "^1.3.1",
     "@types/node": "^22.10.5",
+    "prettier": "^3.4.2",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
   "dependencies": {
     "@timeleap/sia": "^2.2.0",
-    "@timeleap/unchained-client": "^1.1.0",
+    "@timeleap/unchained-client": "^1.2.0",
     "dotenv": "^16.4.7"
   },
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "sia": "sia compile src/model/wizard.sia -o src/model/wizard.ts",
+    "build": "yarn sia && tsc",
     "start": "node dist/index.js",
     "ed": "tsx scripts/ed.ts"
   }
