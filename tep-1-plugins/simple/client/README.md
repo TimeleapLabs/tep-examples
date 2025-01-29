@@ -17,10 +17,18 @@ Then build the project:
 yarn build
 ```
 
+Create a `.env` file with appropriate values for the following variables:
+
+```ini
+CLIENT_PRIVATE_KEY=
+BROKER_URI=
+BROKER_PUBLIC_KEY=
+```
+
 Now you can run the project using the following command:
 
 ```bash
-env UNCHAINED_PROTOCOL_VERSION="0.14.0-alpha" yarn start
+yarn start
 ```
 
 > [!NOTE]

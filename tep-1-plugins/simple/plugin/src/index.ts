@@ -1,49 +1,51 @@
 import { WebSocketServer } from "ws";
 import { Sia } from "@timeleap/sia";
 import { Uuid25 } from "uuid25";
+import { config } from "dotenv";
+import { Wallet, Identity } from "@timeleap/unchained-client";
+import { decodeWizardCall, encodeWizardResponse } from "./model/wizard.js";
+
+config();
 
 const wss = new WebSocketServer({ port: 3000 });
+const wallet = await Wallet.fromBase58(process.env.PLUGIN_PRIVATE_KEY!);
+const worker = await Identity.fromBase58(process.env.WORKER_PUBLIC_KEY!);
 
 wss.on("connection", (ws) => {
   console.log("Client connected");
 
-  ws.on("message", (buf: Buffer) => {
-    const sia = new Sia(buf);
-    const uuid = sia.readByteArray8();
-    sia.readByteArray8(); // skip the signature
-    sia.readAscii(); // skip the tx hash
-    const plugin = sia.readAscii();
-    const method = sia.readAscii();
+  ws.on("message", async (buf: Buffer) => {
+    if (!(await worker.verify(buf))) {
+      console.log("Invalid signature");
+      return;
+    }
 
+    const { uuid, plugin, method, args } = decodeWizardCall(new Sia(buf));
     const uuidStr = Uuid25.fromBytes(uuid).toHyphenated();
     console.log(`Received RPC request ${uuidStr} ${plugin}.${method}`);
 
     if (plugin != "swiss.timeleap.isWizard.v1" && method !== "isWizard") {
-      // return error
-      return ws.send(
-        sia
-          .seek(0)
-          .addByteArray8(uuid)
-          .addUInt16(404) // error code
-          .toUint8ArrayReference()
+      const payload = await wallet.signSia(
+        encodeWizardResponse(Sia.alloc(256), { uuid, error: 404 })
       );
+
+      return ws.send(payload.toUint8ArrayReference()); // return error
     }
 
-    const name = sia.readAscii();
-    const age = sia.readUInt8();
-    const isWizard = age >= 30;
+    const isWizard = args.age >= 30;
     const message = isWizard
-      ? `You are a wizard, ${name}!`
-      : `You are NOT a wizard, ${name}!`;
+      ? `You are a wizard, ${args.name}!`
+      : `You are NOT a wizard, ${args.name}!`;
 
-    const response = new Sia()
-      .addByteArray8(uuid)
-      .addUInt16(0)
-      .addBool(isWizard)
-      .addAscii(message)
-      .toUint8ArrayReference();
+    const response = await wallet.signSia(
+      encodeWizardResponse(Sia.alloc(512), {
+        uuid,
+        isWizard,
+        message,
+      })
+    );
 
-    ws.send(response);
+    ws.send(response.toUint8ArrayReference()); // return response
   });
 });
 

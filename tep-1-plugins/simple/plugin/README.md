@@ -17,6 +17,13 @@ Then build the project:
 yarn build
 ```
 
+Create a `.env` file with appropriate values for the following variables:
+
+```ini
+PLUGIN_PRIVATE_KEY=
+WORKER_PUBLIC_KEY=
+```
+
 Now you can run the project using the following command:
 
 ```bash

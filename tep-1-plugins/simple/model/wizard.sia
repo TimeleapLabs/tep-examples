@@ -1,0 +1,26 @@
+schema IsWizardArgs {
+  name        string8(encoding = "ascii")
+  age         uint8
+}
+
+schema WizardCall {
+  uuid        byte8
+  plugin      string8(encoding = "ascii")
+  method      string8(encoding = "ascii")
+  timeout     uint64
+  args        IsWizardArgs
+}
+
+schema WizardResponse {
+  uuid        byte8
+  error?      uint16
+  isWizard?   bool
+  message?    string8(encoding = "ascii")
+}
+
+plugin swiss.timeleap.isWizard.v1 as Sorcery {
+  method isWizard(timeout = 5000) IsWizardArgs returns {
+    isWizard      bool
+    message       string8(encoding = "ascii")
+  }
+}
