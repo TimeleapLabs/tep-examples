@@ -1,11 +1,7 @@
-import { binary_to_base58 } from "base58-js";
-import * as ed from "@noble/ed25519";
+import { Wallet } from "@timeleap/unchained-client"
 
-const sk = ed.utils.randomPrivateKey();
-const pk = await ed.getPublicKeyAsync(sk);
+const wallet = await Wallet.random();
+const encoded = wallet.toBase58();
 
-const skBase58 = binary_to_base58(sk);
-const pkBase58 = binary_to_base58(pk);
-
-console.log("sk:", skBase58);
-console.log("pk:", pkBase58);
+console.log("sk:", encoded.privateKey);
+console.log("pk:", encoded.publicKey);
