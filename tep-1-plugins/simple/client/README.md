@@ -30,6 +30,3 @@ Now you can run the project using the following command:
 ```bash
 yarn start
 ```
-
-> [!NOTE]
-> You might need to change the protocol version above to match your Unchained version
