@@ -1,6 +1,6 @@
 # TEP1: Simple Client
 
-This is a simple client implemented using the lowlevel Unchained API
+This is a simple client implemented using the Timeleap API
 to call the functions in TEP1: Simple Plugin example.
 
 ## How to run?
