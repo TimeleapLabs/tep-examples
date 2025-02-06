@@ -1,5 +1,5 @@
 import { Sia } from "@timeleap/sia";
-import { Client, Function } from "@timeleap/unchained-client";
+import { Client, Function } from "@timeleap/client";
 
 export interface IsWizardArgs {
   name: string;
@@ -55,7 +55,7 @@ export interface WizardResponse {
 
 export function encodeWizardResponse(
   sia: Sia,
-  wizardResponse: WizardResponse,
+  wizardResponse: WizardResponse
 ): Sia {
   sia.addByteArray8(wizardResponse.uuid);
   sia.addUInt16(wizardResponse.error ?? 0);
@@ -91,7 +91,7 @@ export class Sorcery {
           plugin: this.pluginName,
           method,
           timeout,
-        }),
+        })
       );
     }
     return this.methods.get(method)!;
@@ -99,7 +99,7 @@ export class Sorcery {
 
   public async isWizard(
     sia: Sia,
-    isWizardArgs: IsWizardArgs,
+    isWizardArgs: IsWizardArgs
   ): Promise<{
     isWizard: boolean;
     message: string;

@@ -2,8 +2,8 @@
   "name": "plugin",
   "packageManager": "yarn@4.5.2",
   "dependencies": {
+    "@timeleap/client": "^1.2.0",
     "@timeleap/sia": "^2.2.0",
-    "@timeleap/unchained-client": "^1.2.0",
     "dotenv": "^16.4.7",
     "uuid25": "^0.1.5",
     "ws": "^8.18.0"

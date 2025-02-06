@@ -2,7 +2,7 @@ import { WebSocketServer } from "ws";
 import { Sia } from "@timeleap/sia";
 import { Uuid25 } from "uuid25";
 import { config } from "dotenv";
-import { Wallet, Identity } from "@timeleap/unchained-client";
+import { Wallet, Identity } from "@timeleap/client";
 import { decodeWizardCall, encodeWizardResponse } from "./model/wizard.js";
 
 config();

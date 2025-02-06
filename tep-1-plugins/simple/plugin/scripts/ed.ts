@@ -1,4 +1,4 @@
-import { Wallet } from "@timeleap/unchained-client"
+import { Wallet } from "@timeleap/client"
 
 const wallet = await Wallet.random();
 const encoded = wallet.toBase58();

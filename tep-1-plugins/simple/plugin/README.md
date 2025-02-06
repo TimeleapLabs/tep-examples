@@ -1,6 +1,6 @@
 # TEP1: Simple Plugin
 
-This repository implements the simplest possible Unchained plugin using
+This repository implements the simplest possible Timeleap plugin using
 the lowlevel APIs.
 
 ## How to run?

@@ -1,6 +1,6 @@
 import { Sia } from "@timeleap/sia";
 import { config } from "dotenv";
-import { Client, Wallet } from "@timeleap/unchained-client";
+import { Client, Wallet } from "@timeleap/client";
 import { Sorcery } from "./model/wizard.js";
 
 config();
