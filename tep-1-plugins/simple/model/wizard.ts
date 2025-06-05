@@ -19,11 +19,30 @@ export function decodeIsWizardArgs(sia: Sia): IsWizardArgs {
   };
 }
 
+export interface Fee {
+  amount: number;
+  currency: string;
+}
+
+export function encodeFee(sia: Sia, fee: Fee): Sia {
+  sia.addUInt64(fee.amount);
+  sia.addString8(fee.currency);
+  return sia;
+}
+
+export function decodeFee(sia: Sia): Fee {
+  return {
+    amount: sia.readUInt64(),
+    currency: sia.readString8(),
+  };
+}
+
 export interface WizardCall {
   uuid: Uint8Array | Buffer;
   plugin: string;
   method: string;
   timeout: number;
+  fee: Fee;
   args: IsWizardArgs;
 }
 
@@ -32,6 +51,7 @@ export function encodeWizardCall(sia: Sia, wizardCall: WizardCall): Sia {
   sia.addString8(wizardCall.plugin);
   sia.addString8(wizardCall.method);
   sia.addUInt64(wizardCall.timeout);
+  encodeFee(sia, wizardCall.fee);
   encodeIsWizardArgs(sia, wizardCall.args);
   return sia;
 }
@@ -42,11 +62,13 @@ export function decodeWizardCall(sia: Sia): WizardCall {
     plugin: sia.readString8(),
     method: sia.readString8(),
     timeout: sia.readUInt64(),
+    fee: decodeFee(sia),
     args: decodeIsWizardArgs(sia),
   };
 }
 
 export interface WizardResponse {
+  opcode: number;
   uuid: Uint8Array | Buffer;
   error?: number;
   isWizard?: boolean;
@@ -57,6 +79,7 @@ export function encodeWizardResponse(
   sia: Sia,
   wizardResponse: WizardResponse,
 ): Sia {
+  sia.addUInt8(wizardResponse.opcode);
   sia.addByteArray8(wizardResponse.uuid);
   sia.addUInt16(wizardResponse.error ?? 0);
   sia.addBool(wizardResponse.isWizard ?? false);
@@ -66,6 +89,7 @@ export function encodeWizardResponse(
 
 export function decodeWizardResponse(sia: Sia): WizardResponse {
   return {
+    opcode: sia.readUInt8(),
     uuid: sia.readByteArray8(),
     error: sia.readUInt16(),
     isWizard: sia.readBool(),
@@ -83,7 +107,11 @@ export class Sorcery {
     return new Sorcery(client);
   }
 
-  private getMethod(method: string, timeout: number): Function {
+  private getMethod(
+    method: string,
+    timeout: number,
+    fee: { currency: string; amount: number },
+  ): Function {
     if (!this.methods.has(method)) {
       this.methods.set(
         method,
@@ -91,6 +119,7 @@ export class Sorcery {
           plugin: this.pluginName,
           method,
           timeout,
+          fee,
         }),
       );
     }
@@ -105,7 +134,10 @@ export class Sorcery {
     message: string;
   }> {
     encodeIsWizardArgs(sia, isWizardArgs);
-    const method = this.getMethod("isWizard", 5000);
+    const method = this.getMethod("isWizard", 5000, {
+      currency: "USD",
+      amount: 1,
+    });
     const response = await method.populate(sia).invoke();
     const respIsWizard = response.readBool();
     const respMessage = response.readString8();

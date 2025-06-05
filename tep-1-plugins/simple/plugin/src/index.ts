@@ -2,7 +2,7 @@ import { WebSocketServer } from "ws";
 import { Sia } from "@timeleap/sia";
 import { Uuid25 } from "uuid25";
 import { config } from "dotenv";
-import { Wallet, Identity } from "@timeleap/client";
+import { Wallet, Identity, OpCodes } from "@timeleap/client";
 import { decodeWizardCall, encodeWizardResponse } from "./model/wizard.js";
 
 config();
@@ -20,13 +20,19 @@ wss.on("connection", (ws) => {
       return;
     }
 
-    const { uuid, plugin, method, args } = decodeWizardCall(new Sia(buf));
+    const { uuid, plugin, method, args } = decodeWizardCall(
+      new Sia(buf).skip(1), // Skip the opcode byte
+    );
     const uuidStr = Uuid25.fromBytes(uuid).toHyphenated();
     console.log(`Received RPC request ${uuidStr} ${plugin}.${method}`);
 
     if (plugin != "swiss.timeleap.isWizard.v1" && method !== "isWizard") {
       const payload = await wallet.signSia(
-        encodeWizardResponse(Sia.alloc(256), { uuid, error: 404 })
+        encodeWizardResponse(Sia.alloc(256), {
+          opcode: OpCodes.RPCResponse,
+          uuid,
+          error: 404,
+        }),
       );
 
       return ws.send(payload.toUint8ArrayReference()); // return error
@@ -39,10 +45,11 @@ wss.on("connection", (ws) => {
 
     const response = await wallet.signSia(
       encodeWizardResponse(Sia.alloc(512), {
+        opcode: OpCodes.RPCResponse,
         uuid,
         isWizard,
         message,
-      })
+      }),
     );
 
     ws.send(response.toUint8ArrayReference()); // return response

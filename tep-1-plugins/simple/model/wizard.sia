@@ -3,15 +3,22 @@ schema IsWizardArgs {
   age         uint8
 }
 
+schema Fee {
+  amount     uint64
+  currency   string8(encoding = "ascii")
+}
+
 schema WizardCall {
   uuid        byte8
   plugin      string8(encoding = "ascii")
   method      string8(encoding = "ascii")
   timeout     uint64
+  fee         Fee
   args        IsWizardArgs
 }
 
 schema WizardResponse {
+  opcode      uint8
   uuid        byte8
   error?      uint16
   isWizard?   bool
@@ -19,7 +26,7 @@ schema WizardResponse {
 }
 
 plugin swiss.timeleap.isWizard.v1 as Sorcery {
-  method isWizard(timeout = 5000) IsWizardArgs returns {
+  method isWizard(timeout = 5000, fee = 1, currency = "USD") IsWizardArgs returns {
     isWizard      bool
     message       string8(encoding = "ascii")
   }
