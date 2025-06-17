@@ -9,8 +9,8 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@timeleap/client": "^1.4.0",
-    "@timeleap/sia": "^2.2.0",
+    "@timeleap/client": "^1.5.0",
+    "@timeleap/sia": "^2.2.2",
     "dotenv": "^16.4.7"
   },
   "type": "module",

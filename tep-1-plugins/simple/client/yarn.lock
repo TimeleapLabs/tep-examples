@@ -281,15 +281,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@timeleap/client@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "@timeleap/client@npm:1.4.0"
+"@timeleap/client@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@timeleap/client@npm:1.5.0"
   dependencies:
     "@noble/ed25519": "npm:^2.2.3"
     "@scure/base": "npm:^1.2.4"
-    "@timeleap/sia": "npm:^2.2.0"
+    "@timeleap/sia": "npm:^2.2.2"
     uuidv7: "npm:^1.0.2"
-  checksum: 10c0/ec27cc9e68efe6adb8dd62093db8eb08c15cf40edfe1926581f413a2cae28890778288c0e41b0d2cc476c265c38f6d3b7abd709f269cefcd663d7728a1b19488
+  checksum: 10c0/cd0b7d7a11d2ea10fc3226eadf8a21e08966487ed62ae46acaa3218f0260d00a792619852f75f232db9c958b64368c7d1dab90b5feb27c9721767e644450e3bd
   languageName: node
   linkType: hard
 
@@ -308,12 +308,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@timeleap/sia@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@timeleap/sia@npm:2.2.0"
+"@timeleap/sia@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "@timeleap/sia@npm:2.2.2"
   dependencies:
     utfz-lib: "npm:^0.2.0"
-  checksum: 10c0/cf9b7fdd589eaa3a568bf4de6b4f064a5b4a92d206636b88519ba24f4f6f878b38f1af88b520448ccfc23f62922d80230ded569eae1fe04608211e7646df347d
+  checksum: 10c0/7c27ec7e3e92a3fcbf11c74ba201cd9fc5be9d68841873ac75cf769fb81d70baecce26307765badceffa3f765145a59780be2e96483b186b887dbfb2539ba6b3
   languageName: node
   linkType: hard
 
@@ -438,8 +438,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "client@workspace:."
   dependencies:
-    "@timeleap/client": "npm:^1.4.0"
-    "@timeleap/sia": "npm:^2.2.0"
+    "@timeleap/client": "npm:^1.5.0"
+    "@timeleap/sia": "npm:^2.2.2"
     "@timeleap/sia-schema": "npm:^1.7.0"
     "@types/node": "npm:^22.10.5"
     dotenv: "npm:^16.4.7"
