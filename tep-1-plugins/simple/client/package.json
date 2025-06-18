@@ -2,14 +2,14 @@
   "name": "client",
   "packageManager": "yarn@4.5.2",
   "devDependencies": {
-    "@timeleap/sia-schema": "^1.7.0",
+    "@timeleap/sia-schema": "^1.8.0",
     "@types/node": "^22.10.5",
     "prettier": "^3.4.2",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@timeleap/client": "^1.5.0",
+    "@timeleap/client": "^1.5.1",
     "@timeleap/sia": "^2.2.2",
     "dotenv": "^16.4.7"
   },

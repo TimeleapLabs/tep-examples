@@ -69,6 +69,7 @@ export function decodeWizardCall(sia: Sia): WizardCall {
 
 export interface WizardResponse {
   opcode: number;
+  appId: number;
   uuid: Uint8Array | Buffer;
   error?: number;
   isWizard?: boolean;
@@ -80,6 +81,7 @@ export function encodeWizardResponse(
   wizardResponse: WizardResponse,
 ): Sia {
   sia.addUInt8(wizardResponse.opcode);
+  sia.addUInt64(wizardResponse.appId);
   sia.addByteArray8(wizardResponse.uuid);
   sia.addUInt16(wizardResponse.error ?? 0);
   sia.addBool(wizardResponse.isWizard ?? false);
@@ -90,6 +92,7 @@ export function encodeWizardResponse(
 export function decodeWizardResponse(sia: Sia): WizardResponse {
   return {
     opcode: sia.readUInt8(),
+    appId: sia.readUInt64(),
     uuid: sia.readByteArray8(),
     error: sia.readUInt16(),
     isWizard: sia.readBool(),

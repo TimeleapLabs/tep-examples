@@ -19,6 +19,7 @@ schema WizardCall {
 
 schema WizardResponse {
   opcode      uint8
+  appId       uint64
   uuid        byte8
   error?      uint16
   isWizard?   bool

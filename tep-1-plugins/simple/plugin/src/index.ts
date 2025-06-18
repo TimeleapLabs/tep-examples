@@ -10,6 +10,7 @@ config();
 const wss = new WebSocketServer({ port: 3000 });
 const wallet = await Wallet.fromBase58(process.env.PLUGIN_PRIVATE_KEY!);
 const worker = await Identity.fromBase58(process.env.WORKER_PUBLIC_KEY!);
+const appId = process.env.APP_ID ? parseInt(process.env.APP_ID) : 0;
 
 wss.on("connection", (ws) => {
   console.log("Client connected");
@@ -21,7 +22,7 @@ wss.on("connection", (ws) => {
     }
 
     const { uuid, plugin, method, args } = decodeWizardCall(
-      new Sia(buf).skip(1), // Skip the opcode byte
+      new Sia(buf).skip(9), // Skip the opcode byte and the appId byte
     );
     const uuidStr = Uuid25.fromBytes(uuid).toHyphenated();
     console.log(`Received RPC request ${uuidStr} ${plugin}.${method}`);
@@ -30,6 +31,7 @@ wss.on("connection", (ws) => {
       const payload = await wallet.signSia(
         encodeWizardResponse(Sia.alloc(256), {
           opcode: OpCodes.RPCResponse,
+          appId,
           uuid,
           error: 404,
         }),
@@ -47,6 +49,7 @@ wss.on("connection", (ws) => {
       encodeWizardResponse(Sia.alloc(512), {
         opcode: OpCodes.RPCResponse,
         uuid,
+        appId,
         isWizard,
         message,
       }),

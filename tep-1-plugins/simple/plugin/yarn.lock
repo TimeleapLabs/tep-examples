@@ -281,21 +281,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@timeleap/client@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@timeleap/client@npm:1.5.0"
+"@timeleap/client@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "@timeleap/client@npm:1.5.1"
   dependencies:
     "@noble/ed25519": "npm:^2.2.3"
     "@scure/base": "npm:^1.2.4"
     "@timeleap/sia": "npm:^2.2.2"
     uuidv7: "npm:^1.0.2"
-  checksum: 10c0/cd0b7d7a11d2ea10fc3226eadf8a21e08966487ed62ae46acaa3218f0260d00a792619852f75f232db9c958b64368c7d1dab90b5feb27c9721767e644450e3bd
+  checksum: 10c0/4d555133428e33ab78af45db0857838d1bd7875871ab6d848f2dcf4706dcd0dedcea28f40542598aecc27510e98811162f3c07730edba32ae493f37dd1e89e74
   languageName: node
   linkType: hard
 
-"@timeleap/sia-schema@npm:^1.7.0":
-  version: 1.7.0
-  resolution: "@timeleap/sia-schema@npm:1.7.0"
+"@timeleap/sia-schema@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "@timeleap/sia-schema@npm:1.8.0"
   dependencies:
     change-case: "npm:^5.4.4"
     chevrotain: "npm:^11.0.3"
@@ -303,8 +303,8 @@ __metadata:
   peerDependencies:
     prettier: "*"
   bin:
-    sia: dist/cli.js
-  checksum: 10c0/8190ba3485c35d5c18e402d86408c9d36c653497ee36893742b52cce4dffcbf331f757aa53cb314404c86186dfb2b9f4a35c160d992bb17d1375275a8fffab88
+    sia: dist/src/cli.js
+  checksum: 10c0/fc35c7ce098b0b4e8d067266b1ac27de58d32f3c679b24d9a94dfdbf3895ece1ca0e4c6852f2179e1e216139cfeea925cf1ec8fc871e01474fa0329358f95c0f
   languageName: node
   linkType: hard
 
@@ -1002,9 +1002,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "plugin@workspace:."
   dependencies:
-    "@timeleap/client": "npm:^1.5.0"
+    "@timeleap/client": "npm:^1.5.1"
     "@timeleap/sia": "npm:^2.2.2"
-    "@timeleap/sia-schema": "npm:^1.7.0"
+    "@timeleap/sia-schema": "npm:^1.8.0"
     "@types/node": "npm:^22.10.3"
     "@types/ws": "npm:^8.5.13"
     dotenv: "npm:^16.4.7"

@@ -2,14 +2,14 @@
   "name": "plugin",
   "packageManager": "yarn@4.5.2",
   "dependencies": {
-    "@timeleap/client": "^1.5.0",
+    "@timeleap/client": "^1.5.1",
     "@timeleap/sia": "^2.2.2",
     "dotenv": "^16.4.7",
     "uuid25": "^0.1.5",
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@timeleap/sia-schema": "^1.7.0",
+    "@timeleap/sia-schema": "^1.8.0",
     "@types/node": "^22.10.3",
     "@types/ws": "^8.5.13",
     "prettier": "^3.4.2",
